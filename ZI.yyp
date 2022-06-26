@@ -1,10 +1,19 @@
 {
   "resources": [
+    {"id":{"name":"oAnvil","path":"objects/oAnvil/oAnvil.yy",},"order":1,},
+    {"id":{"name":"sprFullwhiteCenter","path":"sprites/sprFullwhiteCenter/sprFullwhiteCenter.yy",},"order":5,},
+    {"id":{"name":"sndAnvil","path":"sounds/sndAnvil/sndAnvil.yy",},"order":0,},
+    {"id":{"name":"fntTest","path":"fonts/fntTest/fntTest.yy",},"order":0,},
+    {"id":{"name":"sndWhoosh","path":"sounds/sndWhoosh/sndWhoosh.yy",},"order":2,},
+    {"id":{"name":"sprBackgroundTest","path":"sprites/sprBackgroundTest/sprBackgroundTest.yy",},"order":1,},
+    {"id":{"name":"sprAnvil","path":"sprites/sprAnvil/sprAnvil.yy",},"order":2,},
     {"id":{"name":"sprFullwhite","path":"sprites/sprFullwhite/sprFullwhite.yy",},"order":1,},
+    {"id":{"name":"sndThud","path":"sounds/sndThud/sndThud.yy",},"order":1,},
     {"id":{"name":"zitk_general_drawing","path":"scripts/zitk_general_drawing/zitk_general_drawing.yy",},"order":2,},
     {"id":{"name":"zitk_widgets","path":"scripts/zitk_widgets/zitk_widgets.yy",},"order":4,},
     {"id":{"name":"zitk","path":"scripts/zitk/zitk.yy",},"order":0,},
     {"id":{"name":"oKNT","path":"objects/oKNT/oKNT.yy",},"order":0,},
+    {"id":{"name":"sprPortrait","path":"sprites/sprPortrait/sprPortrait.yy",},"order":0,},
     {"id":{"name":"zitk_layouts","path":"scripts/zitk_layouts/zitk_layouts.yy",},"order":3,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
@@ -55,7 +64,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2022.3.0.625",
+    "IDEVersion": "2022.5.1.16",
   },
   "resourceVersion": "1.5",
   "name": "ZI",
