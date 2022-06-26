@@ -1,8 +1,8 @@
 # ZITK: Experimental immediate mode GUI toolkit for Gamemaker (early test version!)
 ...And also an [IMNOTGUI](https://github.com/TandyRum1024/sincerly-imnotgui-gml) rewrite/successor from Gamemaker Studio 1
 
-![preview image 1](doc\zi_gitpreview_2.png)
-![preview image 2](doc\zi_gitpreview_1.gif)
+![preview image 1](doc/zi_gitpreview_2.png)
+![preview image 2](doc/zi_gitpreview_1.gif)
 
 # Overview of implemented functions & widgets
 
@@ -68,7 +68,7 @@ zitk_layout_pop();
 ```
 
 The code above produces the following result:
-![example code 1 result](doc\zi_doc_example_1.png)
+![example code 1 result](doc/zi_doc_example_1.png)
 
 ```gml
 // make the width of layout controllable
@@ -109,7 +109,7 @@ zitk_layout_pop();
 ```
 
 The code above produces the following result:
-![example code 2 result](doc\zi_doc_example_2.gif)
+![example code 2 result](doc/zi_doc_example_2.gif)
 
 # TODO: Add more proper documentation for each functions
 
