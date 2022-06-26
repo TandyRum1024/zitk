@@ -67,7 +67,7 @@ zitk_layout_push(600, 80, 400, 300, UI_LAYOUT_DIR.RIGHT);
 zitk_layout_pop();
 ```
 
-The code above produces the following result:
+The code above produces the following result:</br>
 ![example code 1 result](doc/zi_doc_example_1.png)
 
 ```gml
@@ -108,7 +108,7 @@ zitk_layout_push(32, 400, _w, 200, UI_LAYOUT_DIR.RIGHT);
 zitk_layout_pop();
 ```
 
-The code above produces the following result:
+The code above produces the following result:</br>
 ![example code 2 result](doc/zi_doc_example_2.gif)
 
 # TODO: Add more proper documentation for each functions
