@@ -6,7 +6,7 @@
 	ZIK@MMXXII
 */
 #macro ZITK_AUTORUN_ON_STARTUP true
-#macro ZITK_VERSION "v0.0.0"
+#macro ZITK_VERSION "v0.0.1"
 #macro ZITK_DEBUG_LAYOUT false
 
 // Colour

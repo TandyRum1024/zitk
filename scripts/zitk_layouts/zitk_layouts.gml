@@ -108,39 +108,45 @@ function zitk_autolayout (_x, _y, _w, _h, _div, _arr_layout_callbacks, _directio
 		// Calculate stuffs
 		// (default size/weights)
 		var _layout_is_vertical = (_direction == UI_LAYOUT_DIR.UP || _direction == UI_LAYOUT_DIR.DOWN),
-			_layout_size = (_direction == UI_LAYOUT_DIR.UP || _direction == UI_LAYOUT_DIR.DOWN) ? _w : _h, _size_sum = 0,
+			_layout_size = (_direction == UI_LAYOUT_DIR.UP || _direction == UI_LAYOUT_DIR.DOWN) ? _w : _h, _size_sum = [0, 0],
 			;
 		_sizes ??= [];
 		_inner_directions ??= [];
 		for (var i=array_length(_sizes); i<array_length(_arr_layout_callbacks); i++)
 		{
 			var _sz = _fill_freespace ? 1 : _layout_size;
-			_sizes[i] = _sz;
+			_sizes[i] = [_sz, _sz];
 		}
 		for (var i=array_length(_inner_directions); i<array_length(_arr_layout_callbacks); i++)
 		{
 			_inner_directions[i] = UI_LAYOUT_DIR.RIGHT;
 		}
 		for (var i=0; i<array_length(_sizes); i++)
-			_size_sum += _sizes[i];
+		{
+			_size_sum[0] += _sizes[i][0];
+			_size_sum[1] += _sizes[i][1];
+		}
 		if (!_fill_freespace || _size_sum == 0) // whoopse
-			_size_sum = 1;
+			_size_sum = [1, 1];
 		if (_fill_freespace)
-			_size_sum /= _layout_is_vertical ? _h : _w;
+			_size_sum = [_size_sum[0] / _layout_is_vertical ? _h : _w, _size_sum[1] / _layout_is_vertical ? _h : _w];
 		// Calculate real size of each space
 		var _space_w = [], _space_h = [];
 		for (var i=0; i<array_length(_arr_layout_callbacks); i++)
 		{
+			_space_w[i] = _sizes[i][0] / _size_sum[0];
+			_space_h[i] = _sizes[i][1] / _size_sum[1];
+			/*
 			if (_layout_is_vertical)
 			{
 				_space_w[i] = _layout_size;
-				_space_h[i] = _sizes[i] / _size_sum;
+				_space_h[i] = _sizes[i] / _size_sum[1];
 			}
 			else
 			{
-				_space_w[i] = _sizes[i] / _size_sum;
+				_space_w[i] = _sizes[i] / _size_sum[1];
 				_space_h[i] = _layout_size;
-			}
+			}*/
 		}
 		// (Equally) divide given space and call layout functions for each spaces
 		var _xx = _x, _yy = _y;
@@ -177,7 +183,8 @@ function zitk_layout_pop (_update_cursor=false)
 	}
 	
 	// Calculate bounds of previous region
-	var _wid = 0, _hei = 0;
+	var _wid = UI_LAYOUT_W, _hei = UI_LAYOUT_H;
+	/*
 	switch (global.zitkLayoutDirection)
 	{
 		case UI_LAYOUT_DIR.DOWN:
@@ -194,12 +201,11 @@ function zitk_layout_pop (_update_cursor=false)
 			_hei = (global.zitkLayoutRegionY2 - global.zitkLayoutCurrentMaxY);
 			break;
 	}
+	*/
 	
-	var _has_parent = ds_stack_empty(UI_LAYOUT_STACK);
-	var _state = _has_parent ? UI_LAYOUTSTATE_DEFAULT : ds_stack_pop(UI_LAYOUT_STACK);
+	var _has_parent = !ds_stack_empty(UI_LAYOUT_STACK);
+	var _state = _has_parent ? ds_stack_pop(UI_LAYOUT_STACK) : UI_LAYOUTSTATE_DEFAULT;
 	UI_LAYOUTSTATE_ASSIGN
-	UI_LAYOUT_LOCAL_X = UI_LAYOUT_X - UI_LAYOUT_X1;
-	UI_LAYOUT_LOCAL_Y = UI_LAYOUT_Y - UI_LAYOUT_Y1;
 	UI_LAYOUT_W = UI_LAYOUT_X2 - UI_LAYOUT_X1;
 	UI_LAYOUT_H = UI_LAYOUT_Y2 - UI_LAYOUT_Y1;
 	
@@ -213,6 +219,9 @@ function zitk_layout_pop (_update_cursor=false)
 			UI_LAYOUT_Y += _hei;
 		}
 	}
+	
+	UI_LAYOUT_LOCAL_X = UI_LAYOUT_X - UI_LAYOUT_X1;
+	UI_LAYOUT_LOCAL_Y = UI_LAYOUT_Y - UI_LAYOUT_Y1;
 }
 
 /// @func zitk_layout_set_cursor_pos(_x, _y)
